@@ -46,11 +46,11 @@ public class Arena extends State{
 
     @Override
     void enter(Game game) {
-
+        //Nao acontece nada
     }
 
     @Override
     void esc(Game game) {
-
+        game.changeState(new PauseMenu(game.getArena().getWidth(), game.getArena().getHeight()));
     }
 }
