@@ -53,6 +53,8 @@ public class Gui {
             drawMainMenuHighlighted1(mainMenu);
         else
             drawMainMenuHighlighted2(mainMenu);
+
+        drawGroup();
     }
 
     private void drawMainMenuHighlighted1(MainMenu mainMenu){
@@ -96,6 +98,8 @@ public class Gui {
             drawPauseMenuHighlighted3(pauseMenu);
         else
             drawPauseMenuHighlighted4(pauseMenu);
+
+        drawGroup();
     }
 
     private void drawPauseMenuHighlighted1(PauseMenu pauseMenu) {
@@ -191,6 +195,15 @@ public class Gui {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.putString(pauseMenu.getPosition().getX() + 2, pauseMenu.getPosition().getY() + 5, "Exit");
 
+    }
+
+    private void drawGroup(){
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.putString(0, 0, "GROUP:");
+        graphics.putString(0, 1, "Diogo Santos / up201806878");
+        graphics.putString(0, 2, "Marcelo Reis / up201809566");
     }
 
     public void endGame(){
