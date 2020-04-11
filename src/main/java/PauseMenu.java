@@ -2,22 +2,21 @@ public class PauseMenu extends Menu{
 
     public PauseMenu(int x, int y) {
         super(x, y);
-        text = "PAUSE MENU\n\nResume\nRestart\nExit";
 
-        position = new Position(x-4, y-1);
+        position = new Position(x/2-4, y/4-1);
     }
 
     @Override
     void arrowUp(Game game) {
         if(this.highlighted == 1)
-            this.highlighted = 3;
+            this.highlighted = 4;
         else
             this.highlighted--;
     }
 
     @Override
     void arrowDown(Game game) {
-        if(this.highlighted == 3)
+        if(this.highlighted == 4)
             this.highlighted = 1;
         else
             this.highlighted++;
@@ -42,6 +41,8 @@ public class PauseMenu extends Menu{
             game.changeState(arena);
             game.setArena(arena);
         }
+        else if(highlighted == 3)
+            game.changeState(new MainMenu(game.getArena().getWidth(), game.getArena().getHeight()));
         else
             game.setFinish(true);
     }
@@ -50,4 +51,7 @@ public class PauseMenu extends Menu{
     void esc(Game game) {
         game.changeState(game.getArena());
     }
+
+    @Override
+    void exit(Game game) { game.setFinish(true);}
 }

@@ -2,9 +2,8 @@ public class MainMenu extends Menu{
 
     public MainMenu(int x, int y) {
         super(x, y);
-        text = "MAIN MENU\n\nPlay\nExit";
 
-        position = new Position(x-4, y-1);
+        position = new Position(x/2-4, y/4-1);
     }
 
     @Override
@@ -46,4 +45,7 @@ public class MainMenu extends Menu{
     void esc(Game game) {
         //Nao acontece nada
     }
+
+    @Override
+    void exit(Game game) { game.setFinish(true);}
 }

@@ -53,4 +53,7 @@ public class Arena extends State{
     void esc(Game game) {
         game.changeState(new PauseMenu(game.getArena().getWidth(), game.getArena().getHeight()));
     }
+
+    @Override
+    void exit(Game game) { game.setFinish(true);}
 }

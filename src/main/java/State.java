@@ -9,5 +9,6 @@ public abstract class  State {
     abstract void arrowRight(Game game);
     abstract void enter(Game game);
     abstract void esc(Game game);
+    abstract void exit(Game game);
 
 }
