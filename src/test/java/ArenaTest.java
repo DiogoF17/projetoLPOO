@@ -4,6 +4,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 
@@ -134,7 +135,7 @@ public class ArenaTest {
         Arena arena = new Arena(5, 9, heroMock);
 
         arena.esc(gameMock);
-        Mockito.verify(gameMock, times(1)).changeState();
+        Mockito.verify(gameMock, times(1)).changeState(any(PauseMenu.class));
     }
 
     @Test
