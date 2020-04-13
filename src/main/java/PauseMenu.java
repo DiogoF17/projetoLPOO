@@ -37,7 +37,7 @@ public class PauseMenu extends Menu{
         if(highlighted == 1)
             game.changeState(game.getArena());
         else if(highlighted == 2) {
-            Arena arena = new Arena(game.getArena().getWidth(), game.getArena().getHeight());
+            Arena arena = new Arena(game.getArena().getWidth(), game.getArena().getHeight(), new Hero(game.getArena().getHero().getInitialPosition()));
             game.changeState(arena);
             game.setArena(arena);
         }

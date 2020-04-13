@@ -1,3 +1,4 @@
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -44,7 +45,26 @@ public class Gui {
         screen.refresh();
     }
 
-    private void drawArena(State state){}
+    private void drawArena(State state){
+        Arena arena = (Arena) state;
+
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.fillRectangle(
+                new TerminalPosition(0, 0),
+                new TerminalSize(arena.getWidth(), arena.getHeight()),
+                ' '
+        );
+
+        drawHero(arena);
+    }
+
+    public void drawHero(Arena arena){
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        graphics.putString(arena.getHero().getPosition().getX(), arena.getHero().getPosition().getY(), "H");
+    }
 
     private void drawMainMenu(State state){
         MainMenu mainMenu = (MainMenu) state;

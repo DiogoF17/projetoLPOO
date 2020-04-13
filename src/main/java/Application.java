@@ -17,7 +17,7 @@ public class Application implements GameObserver {
 
         gui.draw();
 
-        while(!game.isFinish())
+        while(!game.getFinish())
             gui.getNextCommand();
 
         gui.endGame();

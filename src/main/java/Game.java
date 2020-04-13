@@ -17,7 +17,7 @@ public class Game {
         gameObservers = new ArrayList<>();
     }
 
-    public boolean isFinish() {
+    public boolean getFinish() {
         return finish;
     }
 

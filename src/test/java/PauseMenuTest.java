@@ -1,14 +1,36 @@
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class PauseMenuTest {
+
+    Game gameMock;
+    Arena arenaMock;
+    Hero heroMock;
+    Position positionMock;
+
+    @Before
+    public void setUp(){
+        gameMock = Mockito.mock(Game.class);
+        arenaMock = Mockito.mock(Arena.class);
+        heroMock = Mockito.mock(Hero.class);
+        positionMock = Mockito.mock(Position.class);
+
+        when(heroMock.getInitialPosition()).thenReturn(positionMock);
+
+        when(arenaMock.getWidth()).thenReturn(5);
+        when(arenaMock.getHeight()).thenReturn(5);
+        when(arenaMock.getHero()).thenReturn(heroMock);
+
+        when(gameMock.getArena()).thenReturn(arenaMock);
+    }
 
     @Test
     public void arrowDownTest(){
         PauseMenu pauseMenu = new PauseMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, pauseMenu.getHighlighted());
         assertEquals(-2, pauseMenu.getPosition().getX());
@@ -30,7 +52,6 @@ public class PauseMenuTest {
     @Test
     public void arrowUpTest(){
         PauseMenu pauseMenu = new PauseMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, pauseMenu.getHighlighted());
         assertEquals(-2, pauseMenu.getPosition().getX());
@@ -52,7 +73,6 @@ public class PauseMenuTest {
     @Test
     public void arrowLeftTest(){
         PauseMenu pauseMenu = new PauseMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, pauseMenu.getHighlighted());
         assertEquals(-2, pauseMenu.getPosition().getX());
@@ -66,7 +86,6 @@ public class PauseMenuTest {
     @Test
     public void arrowRightTest(){
         PauseMenu pauseMenu = new PauseMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, pauseMenu.getHighlighted());
         assertEquals(-2, pauseMenu.getPosition().getX());
@@ -80,7 +99,6 @@ public class PauseMenuTest {
     @Test
     public void enterTest(){
         PauseMenu pauseMenu = new PauseMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, pauseMenu.getHighlighted());
         assertEquals(-2, pauseMenu.getPosition().getX());
@@ -89,12 +107,23 @@ public class PauseMenuTest {
         pauseMenu.enter(gameMock);
         assertEquals(1, pauseMenu.getHighlighted());
 
+        pauseMenu.arrowDown(gameMock);
+        pauseMenu.enter(gameMock);
+        assertEquals(2, pauseMenu.getHighlighted());
+
+        pauseMenu.arrowDown(gameMock);
+        pauseMenu.enter(gameMock);
+        assertEquals(3, pauseMenu.getHighlighted());
+
+        pauseMenu.arrowDown(gameMock);
+        pauseMenu.enter(gameMock);
+        assertEquals(4, pauseMenu.getHighlighted());
+
     }
 
     @Test
     public void escTest(){
         PauseMenu pauseMenu = new PauseMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, pauseMenu.getHighlighted());
         assertEquals(-2, pauseMenu.getPosition().getX());
@@ -108,7 +137,6 @@ public class PauseMenuTest {
     @Test
     public void exitTest(){
         PauseMenu pauseMenu = new PauseMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, pauseMenu.getHighlighted());
         assertEquals(-2, pauseMenu.getPosition().getX());

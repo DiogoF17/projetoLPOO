@@ -35,7 +35,7 @@ public class MainMenu extends Menu{
     @Override
     void enter(Game game) {
         if(this.highlighted == 1)
-            game.changeState(game.getArena());
+            game.changeState(new Arena(game.getArena().getWidth(), game.getArena().getHeight(), new Hero(game.getArena().getHero().getInitialPosition())));
         else
             game.setFinish(true);
 

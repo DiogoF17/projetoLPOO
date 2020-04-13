@@ -8,8 +8,8 @@ public class GameCreator {
     }
 
     public Game createGame(int width, int height, int enemies, int coins, int walls) {
-        //Hero hero = new Hero(width / 2, height / 2, 10);
-        Arena arena = new Arena(width, height);
+        Hero hero = new Hero(new Position(width / 2, height / 2));
+        Arena arena = new Arena(width, height, hero);
         Game game = new Game(arena);
 
         /*for (int i = 0; i < coins; i++)

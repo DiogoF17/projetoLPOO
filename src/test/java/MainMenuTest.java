@@ -1,15 +1,37 @@
 import com.sun.tools.javac.Main;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 public class MainMenuTest {
+
+    Game gameMock;
+    Arena arenaMock;
+    Hero heroMock;
+    Position positionMock;
+
+    @Before
+    public void setUp(){
+        gameMock = Mockito.mock(Game.class);
+        arenaMock = Mockito.mock(Arena.class);
+        heroMock = Mockito.mock(Hero.class);
+        positionMock = Mockito.mock(Position.class);
+
+        when(heroMock.getInitialPosition()).thenReturn(positionMock);
+
+        when(arenaMock.getWidth()).thenReturn(5);
+        when(arenaMock.getHeight()).thenReturn(5);
+        when(arenaMock.getHero()).thenReturn(heroMock);
+
+        when(gameMock.getArena()).thenReturn(arenaMock);
+    }
 
     @Test
     public void arrowDownTest(){
         MainMenu mainMenu = new MainMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, mainMenu.getHighlighted());
         assertEquals(-2, mainMenu.getPosition().getX());
@@ -26,7 +48,6 @@ public class MainMenuTest {
     @Test
     public void arrowUpTest(){
         MainMenu mainMenu = new MainMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, mainMenu.getHighlighted());
         assertEquals(-2, mainMenu.getPosition().getX());
@@ -43,7 +64,6 @@ public class MainMenuTest {
     @Test
     public void arrowLeftTest(){
         MainMenu mainMenu = new MainMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, mainMenu.getHighlighted());
         assertEquals(-2, mainMenu.getPosition().getX());
@@ -57,7 +77,6 @@ public class MainMenuTest {
     @Test
     public void arrowRightTest(){
         MainMenu mainMenu = new MainMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, mainMenu.getHighlighted());
         assertEquals(-2, mainMenu.getPosition().getX());
@@ -71,7 +90,6 @@ public class MainMenuTest {
     @Test
     public void enterTest(){
         MainMenu mainMenu = new MainMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, mainMenu.getHighlighted());
         assertEquals(-2, mainMenu.getPosition().getX());
@@ -80,12 +98,15 @@ public class MainMenuTest {
         mainMenu.enter(gameMock);
         assertEquals(1, mainMenu.getHighlighted());
 
+        mainMenu.arrowDown(gameMock);
+        mainMenu.enter(gameMock);
+        assertEquals(2, mainMenu.getHighlighted());
+
     }
 
     @Test
     public void escTest(){
         MainMenu mainMenu = new MainMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, mainMenu.getHighlighted());
         assertEquals(-2, mainMenu.getPosition().getX());
@@ -99,7 +120,6 @@ public class MainMenuTest {
     @Test
     public void exitTest(){
         MainMenu mainMenu = new MainMenu(5, 6);
-        Game gameMock = Mockito.mock(Game.class);
 
         assertEquals(1, mainMenu.getHighlighted());
         assertEquals(-2, mainMenu.getPosition().getX());
@@ -109,5 +129,6 @@ public class MainMenuTest {
         assertEquals(1, mainMenu.getHighlighted());
 
     }
+
 }
 

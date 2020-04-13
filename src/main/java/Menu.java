@@ -12,15 +12,8 @@ public abstract class Menu extends State{
         return highlighted;
     }
 
-    public void setHighlighted(int highlighted) {
-        this.highlighted = highlighted;
-    }
-
     public Position getPosition() {
         return position;
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
 }

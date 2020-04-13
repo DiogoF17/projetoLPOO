@@ -3,9 +3,13 @@ public class Arena extends State{
     private int width;
     private int height;
 
-    public Arena(int width, int height) {
+    private Hero hero;
+
+    public Arena(int width, int height, Hero hero) {
         this.width = width;
         this.height = height;
+
+        this.hero = hero;
     }
 
     public int getWidth() {
@@ -24,24 +28,36 @@ public class Arena extends State{
         this.height = height;
     }
 
+    public Hero getHero() {
+        return hero;
+    }
+
+    public void setHero(Hero hero) {
+        this.hero = hero;
+    }
+
     @Override
     void arrowUp(Game game) {
-
+        Position position = this.hero.upPosition();
+        this.hero.setPosition(position);
     }
 
     @Override
     void arrowDown(Game game) {
-
+        Position position = this.hero.downPosition();
+        this.hero.setPosition(position);
     }
 
     @Override
     void arrowLeft(Game game) {
-
+        Position position = this.hero.leftPosition();
+        this.hero.setPosition(position);
     }
 
     @Override
     void arrowRight(Game game) {
-
+        Position position = this.hero.rightPosition();
+        this.hero.setPosition(position);
     }
 
     @Override
